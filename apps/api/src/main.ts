@@ -14,15 +14,11 @@ async function bootstrap() {
     logger: ['log', 'error', 'warn', 'debug', 'verbose'],
   });
 
-  // Get configuration service
   const config = app.get(AppConfigService);
 
-  // Security middleware
   app.use(helmet());
 
-  // Compression middleware
   app.use(compression());
-  // Parse env var (puede venir separada por comas)
   const whitelist = process.env.CORS_ORIGIN
     ? process.env.CORS_ORIGIN.split(',').map((o) => o.trim())
     : [];
@@ -52,7 +48,6 @@ async function bootstrap() {
     }),
   );
 
-  // Swagger documentation
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Lite-box Related Posts API')
     .setDescription('API for managing related posts with image uploads to AWS S3')
