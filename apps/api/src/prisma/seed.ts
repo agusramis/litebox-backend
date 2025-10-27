@@ -10,6 +10,9 @@ async function main() {
     data: {
       title: 'Getting Started with AWS Lambda',
       imageKey: 'lite-box/2025-10-21/sample-lambda.jpg',
+      topic: 'AWS',
+      author: 'John Doe',
+      readTime: 5,
     },
   });
 
@@ -17,6 +20,9 @@ async function main() {
     data: {
       title: 'Best Practices for Serverless Architecture',
       imageKey: 'lite-box/2025-10-21/sample-serverless.jpg',
+      topic: 'Serverless',
+      author: 'Jane Smith',
+      readTime: 8,
     },
   });
 
@@ -24,6 +30,9 @@ async function main() {
     data: {
       title: 'Understanding AWS S3 Storage Classes',
       imageKey: 'lite-box/2025-10-21/sample-s3.jpg',
+      topic: 'AWS Storage',
+      author: 'Bob Johnson',
+      readTime: 6,
     },
   });
 
