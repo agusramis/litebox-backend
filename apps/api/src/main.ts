@@ -22,10 +22,19 @@ async function bootstrap() {
 
   // Compression middleware
   app.use(compression());
+  // Parse env var (puede venir separada por comas)
+  const whitelist = process.env.CORS_ORIGIN
+    ? process.env.CORS_ORIGIN.split(',').map((o) => o.trim())
+    : [];
 
-  // CORS configuration
   app.enableCors({
-    origin: config.corsOrigin.split(',').map((origin) => origin.trim()),
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+
+      if (whitelist.includes(origin)) return callback(null, true);
+
+      return callback(null, false);
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
@@ -81,7 +90,3 @@ bootstrap().catch((error) => {
   console.error('❌ Application failed to start:', error);
   process.exit(1);
 });
-
-
-
-
