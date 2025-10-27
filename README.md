@@ -373,24 +373,6 @@ npm run prisma:studio      # Open Prisma Studio
 npm run prisma:seed        # Seed database
 ```
 
-## 🛡️ Production Checklist
-
-- [ ] Set `NODE_ENV=production`
-- [ ] Use strong database credentials
-- [ ] Enable SSL for database connections (`sslmode=require`)
-- [ ] Configure proper CORS origins (no wildcards)
-- [ ] Use IAM roles instead of access keys when possible (EC2, ECS, Lambda)
-- [ ] Enable CloudWatch logging
-- [ ] Set up monitoring and alerts
-- [ ] Configure proper security groups and network ACLs
-- [ ] Use CloudFront for S3 asset delivery
-- [ ] Enable S3 bucket encryption
-- [ ] Implement rate limiting (e.g., @nestjs/throttler)
-- [ ] Set up database backups
-- [ ] Configure environment-specific secrets (AWS Secrets Manager)
-- [ ] Run database migrations before deployment
-- [ ] Set up CI/CD pipeline (GitHub Actions, AWS CodePipeline)
-
 ## 📊 Database Schema
 
 ```prisma
@@ -404,65 +386,4 @@ model RelatedPost {
 }
 ```
 
-## 🤝 Contributing
-
-1. Follow the existing code style (ESLint + Prettier)
-2. Write meaningful commit messages
-3. Update documentation for API changes
-4. Add tests for new features
-
-## 📝 License
-
-UNLICENSED - Private project
-
-## 🆘 Troubleshooting
-
-### Database Connection Issues
-
-**Problem:** Cannot connect to PostgreSQL
-
-**Solutions:**
-
-- Check if PostgreSQL is running: `docker-compose ps`
-- Verify `DATABASE_URL` in `.env`
-- For RDS: Check security group rules and VPC settings
-
-### S3 Upload Failures
-
-**Problem:** Failed to upload file to S3
-
-**Solutions:**
-
-- Verify AWS credentials are correct
-- Check IAM permissions for S3 bucket
-- Ensure S3 bucket exists and is in the correct region
-- Check bucket CORS configuration if uploading from browser
-
-### Prisma Issues
-
-**Problem:** `@prisma/client` not found
-
-**Solution:**
-
-```bash
-npm run prisma:generate
-```
-
-**Problem:** Migration conflicts
-
-**Solution:**
-
-```bash
-# Reset database (WARNING: deletes all data)
-npx prisma migrate reset --schema=./apps/api/src/prisma/schema.prisma
-```
-
-## 📞 Support
-
-For issues and questions, please open an issue in the repository.
-
----
-
-Built with ❤️ using NestJS and AWS
-
-
+#
